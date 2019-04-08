@@ -42,7 +42,10 @@ const fillMatrix = ({ width, height }) =>
     fillArray(height)
   );
 const initMatrix = dimensions => fillMatrix(dimensions)(0);
-const mapMatrix = cb => matrix => matrix.map(array => array.map(cb));
+const mapMatrix = cb => matrix =>
+  matrix.map((array, row) =>
+    array.map((value, col) => cb(value, { row, col }, matrix))
+  );
 const constructMatrix = constructor =>
   pipe(
     initMatrix,
@@ -191,5 +194,9 @@ module.exports = {
   updateArrayIndex,
   updateMatrixLocation,
   comparePaths,
-  containsLocation
+  containsLocation,
+  constructMatrix,
+  isLocationInBoundsFactory,
+  getLocationFactory,
+  mapMatrix
 };
