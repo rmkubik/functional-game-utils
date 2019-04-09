@@ -9,7 +9,7 @@ const {
 } = require("./paths");
 const { Display } = require("rot-js");
 
-const dimensions = { width: 30, height: 15 };
+const dimensions = { width: 200, height: 15 };
 
 const createTile = ({ bg = 0, fg = 0 }) => ({
   bg,
@@ -113,9 +113,9 @@ const getFgColor = ({ fg }) => {
 const getBgColor = ({ bg }) => {
   switch (bg) {
     case 1:
-      return "green";
+      return "#27ae60";
     case 0:
-      return "blue";
+      return "#2980b9";
     default:
       return "white";
   }
