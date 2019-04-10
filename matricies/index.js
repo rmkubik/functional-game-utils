@@ -1,11 +1,12 @@
-import { pipe, update, adjust } from "ramda";
+import { pipe, update, adjust, curry } from "ramda";
 import { fillArray } from "../arrays";
 
-const fillMatrix = ({ width, height }) =>
+const fillMatrix = curry(({ width, height }, value) =>
   pipe(
     fillArray(width),
     fillArray(height)
-  );
+  )(value)
+);
 
 const initMatrix = dimensions => fillMatrix(dimensions)(0);
 
