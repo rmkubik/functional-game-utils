@@ -1,5 +1,7 @@
-import { isLocationInBounds } from "./locations";
-import { initMatrix } from ".";
+import { pipe, update } from "ramda";
+import { isLocationInBounds, getLocation } from "./locations";
+import { initMatrix, updateMatrix } from ".";
+import { AssertionError } from "../assert";
 
 describe("isLocationInBounds", () => {
   [
@@ -60,5 +62,38 @@ describe("isLocationInBounds", () => {
 
       expect(inBounds).toBe(false);
     });
+  });
+
+  it(`should return false if matrix row isn't an array`, () => {
+    const location = { row: 0, col: 1 };
+    const matrix = pipe(
+      initMatrix,
+      update(location.row, null)
+    )({ width: 2, height: 2 });
+
+    const inBounds = isLocationInBounds(matrix, location);
+
+    expect(inBounds).toBe(false);
+  });
+});
+
+describe("getLocation", () => {
+  it("should return a valid location", () => {
+    const matrix = pipe(
+      initMatrix,
+      updateMatrix({ row: 1, col: 1 }, "value")
+    )({ height: 2, width: 2 });
+
+    const item = getLocation(matrix, { row: 1, col: 1 });
+
+    expect(item).toBe("value");
+  });
+
+  it("should throw AssertionError if location is out of bounds", () => {
+    const matrix = initMatrix({ height: 2, width: 2 });
+
+    expect(() => {
+      getLocation(matrix, { row: -1, col: 1 });
+    }).toThrow(AssertionError);
   });
 });
