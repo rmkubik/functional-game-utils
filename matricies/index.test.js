@@ -1,5 +1,11 @@
-import { AssertionError } from "../assert";
-import { fillMatrix, initMatrix, mapMatrix, constructMatrix } from "./index";
+import { pipe } from "ramda";
+import {
+  fillMatrix,
+  initMatrix,
+  mapMatrix,
+  constructMatrix,
+  updateMatrix
+} from "./index";
 
 describe("fillMatrix", () => {
   it("should fill matrix with provided value and square dimensions", () => {
@@ -86,5 +92,25 @@ describe("constructMatrix", () => {
     const matrix = constructMatrix(() => ++i, { width: 2, height: 3 });
 
     expect(matrix).toEqual([[1, 2], [3, 4], [5, 6]]);
+  });
+});
+
+describe("updateMatrix", () => {
+  it("should update the value at a location in the matrix", () => {
+    const matrix = pipe(
+      initMatrix,
+      updateMatrix({ row: 2, col: 1 }, "update")
+    )({ height: 3, width: 2 });
+
+    expect(matrix).toEqual([[0, 0], [0, 0], [0, "update"]]);
+  });
+
+  it("should update the value at a location in the matrix when curried", () => {
+    const matrix = pipe(
+      initMatrix,
+      updateMatrix({ row: 2, col: 1 })("update")
+    )({ height: 3, width: 2 });
+
+    expect(matrix).toEqual([[0, 0], [0, 0], [0, "update"]]);
   });
 });

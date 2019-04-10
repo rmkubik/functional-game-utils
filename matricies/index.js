@@ -23,11 +23,8 @@ const constructMatrix = curry((constructor, dimensions) =>
   )(dimensions)
 );
 
-const updateMatrix = location => value => matrix =>
-  adjust(
-    location.row,
-    update(location.col, value, matrix[location.row]),
-    matrix
-  );
+const updateMatrix = curry(({ row, col }, value, matrix) =>
+  update(row, update(col, value, matrix[row]), matrix)
+);
 
 export { fillMatrix, initMatrix, mapMatrix, constructMatrix, updateMatrix };
