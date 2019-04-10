@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ramda": "^0.26.1",
     "rot-js": "^2.0.3"
   }
 }
