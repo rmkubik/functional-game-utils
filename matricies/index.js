@@ -1,4 +1,4 @@
-import { pipe, update, adjust, curry } from "ramda";
+import { pipe, update, curry } from "ramda";
 import { fillArray } from "../arrays";
 
 const fillMatrix = curry(({ width, height }, value) =>
