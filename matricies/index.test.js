@@ -1,5 +1,5 @@
 import { AssertionError } from "../assert";
-import { fillMatrix, initMatrix, mapMatrix } from "./index";
+import { fillMatrix, initMatrix, mapMatrix, constructMatrix } from "./index";
 
 describe("fillMatrix", () => {
   it("should fill matrix with provided value and square dimensions", () => {
@@ -56,5 +56,35 @@ describe("mapMatrix", () => {
     expect(output).toEqual([[2, 3], [4, 5]]);
     // expect original matrix not to be modified
     expect(input).toEqual([[1, 2], [3, 4]]);
+  });
+});
+
+describe("constructMatrix", () => {
+  it("should create a matrix with provided function and dimensions", () => {
+    let i = 0;
+    const matrix = constructMatrix(() => ++i, { width: 2, height: 2 });
+
+    expect(matrix).toEqual([[1, 2], [3, 4]]);
+  });
+
+  it("should create a matrix with provided function and dimensions when curried", () => {
+    let i = 0;
+    const matrix = constructMatrix(() => ++i)({ width: 2, height: 2 });
+
+    expect(matrix).toEqual([[1, 2], [3, 4]]);
+  });
+
+  it("should create a matrix with provided function and dimensions where width is larger", () => {
+    let i = 0;
+    const matrix = constructMatrix(() => ++i, { width: 3, height: 2 });
+
+    expect(matrix).toEqual([[1, 2, 3], [4, 5, 6]]);
+  });
+
+  it("should create a matrix with provided function and dimensions where height is larger", () => {
+    let i = 0;
+    const matrix = constructMatrix(() => ++i, { width: 2, height: 3 });
+
+    expect(matrix).toEqual([[1, 2], [3, 4], [5, 6]]);
   });
 });

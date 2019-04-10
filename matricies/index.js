@@ -16,11 +16,12 @@ const mapMatrix = curry((cb, matrix) =>
   )
 );
 
-const constructMatrix = constructor =>
+const constructMatrix = curry((constructor, dimensions) =>
   pipe(
     initMatrix,
     mapMatrix(constructor)
-  );
+  )(dimensions)
+);
 
 const updateMatrix = location => value => matrix =>
   adjust(
