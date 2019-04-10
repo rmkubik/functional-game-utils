@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "ramda": "^0.26.1",
+    "ramda-adjunct": "^2.16.1",
     "rot-js": "^2.0.3"
   },
   "devDependencies": {
