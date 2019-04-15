@@ -1,7 +1,7 @@
 import { curry, pipe, map, filter } from "ramda";
 import { isLocationInBounds } from "./locations";
 
-const convertDirection = curry((location, direction) => {
+const getLocationFromDirection = curry((location, direction) => {
   let { row, col } = location;
 
   if (direction.up) {
@@ -40,10 +40,12 @@ const getNeighbors = curry(
       return [];
     }
 
-    const convertDirectionWithLocation = convertDirection(location);
+    const getLocationFromDirectionWithLocation = getLocationFromDirection(
+      location
+    );
 
     return pipe(
-      map(convertDirectionWithLocation),
+      map(getLocationFromDirectionWithLocation),
       filter(isLocationInBoundsWithMatrix)
     )(directions);
   }
