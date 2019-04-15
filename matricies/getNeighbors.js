@@ -1,5 +1,6 @@
 import { curry, pipe, map, filter } from "ramda";
 import { isLocationInBounds } from "./locations";
+import { CROSS_NEIGHBORS } from "./directions";
 
 const getLocationFromDirection = curry((location, direction) => {
   let { row, col } = location;
@@ -22,33 +23,22 @@ const getLocationFromDirection = curry((location, direction) => {
   };
 });
 
-const getNeighbors = curry(
-  (
-    directions = [
-      { up: true },
-      { left: true },
-      { right: true },
-      { down: true }
-    ],
-    matrix,
-    location
-  ) => {
-    const isLocationInBoundsWithMatrix = isLocationInBounds(matrix);
+const getNeighbors = curry((directions = CROSS_NEIGHBORS, matrix, location) => {
+  const isLocationInBoundsWithMatrix = isLocationInBounds(matrix);
 
-    if (!isLocationInBoundsWithMatrix(location)) {
-      // Location out of bounds has no neighbors
-      return [];
-    }
-
-    const getLocationFromDirectionWithLocation = getLocationFromDirection(
-      location
-    );
-
-    return pipe(
-      map(getLocationFromDirectionWithLocation),
-      filter(isLocationInBoundsWithMatrix)
-    )(directions);
+  if (!isLocationInBoundsWithMatrix(location)) {
+    // Location out of bounds has no neighbors
+    return [];
   }
-);
+
+  const getLocationFromDirectionWithLocation = getLocationFromDirection(
+    location
+  );
+
+  return pipe(
+    map(getLocationFromDirectionWithLocation),
+    filter(isLocationInBoundsWithMatrix)
+  )(directions);
+});
 
 export default getNeighbors;

@@ -1,5 +1,7 @@
 import { initMatrix } from "./index";
 import getNeighbors from "./getNeighbors";
+import expectToEqualArray from "../testUtils/expectToEqualArray";
+import { CROSS_NEIGHBORS, ALL_NEIGHBORS } from "./directions";
 
 describe("getNeighbors", () => {
   [
@@ -71,18 +73,11 @@ describe("getNeighbors", () => {
     }
   ].forEach(({ location, expectedNeighbors, name }) => {
     it(`should get all cross neighbors for case: ${name}`, () => {
-      const crossNeighbors = [
-        { up: true },
-        { left: true },
-        { right: true },
-        { down: true }
-      ];
       const matrix = initMatrix({ width: 10, height: 10 });
 
-      const neighbors = getNeighbors(crossNeighbors, matrix, location);
+      const neighbors = getNeighbors(CROSS_NEIGHBORS, matrix, location);
 
-      expect(neighbors).toEqual(expect.arrayContaining(expectedNeighbors));
-      expect(neighbors.length).toBe(expectedNeighbors.length);
+      expectToEqualArray(neighbors, expectedNeighbors);
     });
   });
 
@@ -183,22 +178,11 @@ describe("getNeighbors", () => {
     }
   ].forEach(({ name, location, expectedNeighbors }) => {
     it(`should get all diagonal neighbors for case: ${name}`, () => {
-      const crossNeighbors = [
-        { up: true, left: true },
-        { up: true },
-        { up: true, right: true },
-        { right: true },
-        { down: true, right: true },
-        { down: true },
-        { down: true, left: true },
-        { left: true }
-      ];
       const matrix = initMatrix({ width: 10, height: 10 });
 
-      const neighbors = getNeighbors(crossNeighbors, matrix, location);
+      const neighbors = getNeighbors(ALL_NEIGHBORS, matrix, location);
 
-      expect(neighbors).toEqual(expect.arrayContaining(expectedNeighbors));
-      expect(neighbors.length).toBe(expectedNeighbors.length);
+      expectToEqualArray(neighbors, expectedNeighbors);
     });
   });
 });
