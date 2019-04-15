@@ -20,4 +20,8 @@ const getLocation = curry((matrix, location) => {
   return matrix[location.row][location.col];
 });
 
-export { isLocationInBounds, getLocation };
+const compareLocations = curry((a, b) => {
+  return a.row === b.row && a.col === b.col;
+});
+
+export { isLocationInBounds, getLocation, compareLocations };

@@ -1,5 +1,5 @@
 import { pipe, update } from "ramda";
-import { isLocationInBounds, getLocation } from "./locations";
+import { isLocationInBounds, getLocation, compareLocations } from "./locations";
 import { initMatrix, updateMatrix } from ".";
 import { AssertionError } from "../assert";
 
@@ -95,5 +95,85 @@ describe("getLocation", () => {
     expect(() => {
       getLocation(matrix, { row: -1, col: 1 });
     }).toThrow(AssertionError);
+  });
+});
+
+describe("compareLocations", () => {
+  [
+    [
+      {
+        row: 0,
+        col: 0
+      },
+      {
+        row: 0,
+        col: 0
+      }
+    ],
+    [
+      {
+        row: -6,
+        col: -6
+      },
+      {
+        row: -6,
+        col: -6
+      }
+    ],
+    [
+      {
+        row: -12,
+        col: 123
+      },
+      {
+        row: -12,
+        col: 123
+      }
+    ]
+  ].forEach(([a, b]) => {
+    it(`should return true for equal locations: ${JSON.stringify(
+      a
+    )} === ${JSON.stringify(b)}`, () => {
+      expect(compareLocations(a, b)).toBe(true);
+    });
+  });
+
+  [
+    [
+      {
+        row: 0,
+        col: 0
+      },
+      {
+        row: 100,
+        col: 123
+      }
+    ],
+    [
+      {
+        row: -62,
+        col: -6
+      },
+      {
+        row: -6,
+        col: -2
+      }
+    ],
+    [
+      {
+        row: 0,
+        col: 123
+      },
+      {
+        row: 123,
+        col: 123
+      }
+    ]
+  ].forEach(([a, b]) => {
+    it(`should return false for not equal locations: ${JSON.stringify(
+      a
+    )} !== ${JSON.stringify(b)}`, () => {
+      expect(compareLocations(a, b)).toBe(false);
+    });
   });
 });
