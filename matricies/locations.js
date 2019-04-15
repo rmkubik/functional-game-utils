@@ -1,23 +1,23 @@
 import { curry } from "ramda";
 import assert from "../assert";
 
-const isLocationInBounds = curry((grid, { row, col }) =>
+const isLocationInBounds = curry((matrix, { row, col }) =>
   Boolean(
-    row < grid.length &&
+    row < matrix.length &&
       row >= 0 &&
-      grid[row] &&
-      col < grid[row].length &&
+      matrix[row] &&
+      col < matrix[row].length &&
       col >= 0
   )
 );
 
-const getLocation = curry((grid, location) => {
+const getLocation = curry((matrix, location) => {
   assert(
-    isLocationInBounds(grid, location),
+    isLocationInBounds(matrix, location),
     `Location: ${JSON.stringify(location)} isn't in bounds!`
   );
 
-  return grid[location.row][location.col];
+  return matrix[location.row][location.col];
 });
 
 export { isLocationInBounds, getLocation };
