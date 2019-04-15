@@ -1,4 +1,9 @@
-import { fillArray, initArray, constructArray } from "./index";
+import {
+  fillArray,
+  initArray,
+  constructArray,
+  containsLocation
+} from "./index";
 import { AssertionError } from "../assert";
 
 describe("fillArray", () => {
@@ -54,5 +59,76 @@ describe("constructArray", () => {
     expect(() => {
       build("test");
     }).toThrow(AssertionError);
+  });
+});
+
+describe("containsLocation", () => {
+  [
+    [
+      [
+        {
+          row: 0,
+          col: 0
+        }
+      ],
+      {
+        row: 0,
+        col: 0
+      }
+    ],
+    [
+      [
+        {
+          row: -3,
+          col: -1
+        },
+        {
+          row: 0,
+          col: 0
+        }
+      ],
+      {
+        row: -3,
+        col: -1
+      }
+    ]
+  ].forEach(([array, location]) => {
+    it(`should return true if location: ${JSON.stringify(
+      location
+    )} is contained in ${array}`, () => {
+      expect(containsLocation(array, location)).toBe(true);
+    });
+  });
+
+  [
+    [
+      [],
+      {
+        row: 10,
+        col: 3
+      }
+    ],
+    [
+      [
+        {
+          row: -1,
+          col: -1
+        },
+        {
+          row: 0,
+          col: 0
+        }
+      ],
+      {
+        row: 3,
+        col: 14
+      }
+    ]
+  ].forEach(([array, location]) => {
+    it(`should return false if location: ${JSON.stringify(
+      location
+    )} is NOT contained in ${array}`, () => {
+      expect(containsLocation(array, location)).toBe(false);
+    });
   });
 });

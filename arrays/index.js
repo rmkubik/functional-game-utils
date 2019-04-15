@@ -1,5 +1,6 @@
 import { pipe, map, curry } from "ramda";
 import { isFunction, isPositive } from "ramda-adjunct";
+import { compareLocations } from "../matricies/locations";
 import assert from "../assert";
 
 const fillArray = curry((length, value) => Array(length).fill(value));
@@ -16,4 +17,8 @@ const constructArray = curry((constructor, length) => {
   )(length);
 });
 
-export { fillArray, initArray, constructArray };
+const containsLocation = curry((array, location) =>
+  Boolean(array.find(value => compareLocations(value, location)))
+);
+
+export { fillArray, initArray, constructArray, containsLocation };
