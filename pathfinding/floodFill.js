@@ -1,8 +1,14 @@
 import { containsLocation } from "../arrays";
+import { getLocation } from "../matricies/locations";
 
-const floodFill = (getNeighbors, matrix, open, closed, found) => {
-  // console.log("open: ", open, "closed: ", closed, "found: ", found);
-
+const floodFill = (
+  getNeighbors,
+  isLocationValid,
+  matrix,
+  open,
+  closed,
+  found
+) => {
   if (open.length === 0) {
     // exit case, we've found all connected locations
     return found;
@@ -11,9 +17,7 @@ const floodFill = (getNeighbors, matrix, open, closed, found) => {
   // get next open location
   const location = open.pop();
 
-  // is location valid?
-  // currently all locations are valid
-  if (true) {
+  if (isLocationValid(getLocation(matrix, location))) {
     // mark location as found
     found.push(location);
 
@@ -34,7 +38,7 @@ const floodFill = (getNeighbors, matrix, open, closed, found) => {
   // close current location
   closed.push(location);
 
-  return floodFill(getNeighbors, matrix, open, closed, found);
+  return floodFill(getNeighbors, isLocationValid, matrix, open, closed, found);
 };
 
 export default floodFill;
