@@ -21,8 +21,11 @@ const floodFill = (getNeighbors, matrix, open, closed, found) => {
     const neighbors = getNeighbors(matrix, location);
 
     neighbors.forEach(neighbor => {
-      if (!containsLocation(closed, neighbor)) {
-        // if location not already closed, push it into open
+      if (
+        !containsLocation(closed, neighbor) &&
+        !containsLocation(open, neighbor)
+      ) {
+        // if location not already closed or marked as open, push it into open
         open.push(neighbor);
       }
     });

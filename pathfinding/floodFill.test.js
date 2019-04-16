@@ -1,6 +1,7 @@
+import { pipe, flatten } from "ramda";
 import floodFill from "./floodFill";
 import getNeighbors from "../matricies/getNeighbors";
-import { initMatrix } from "../matricies";
+import { initMatrix, mapMatrix } from "../matricies";
 import expectToEqualArray from "../testUtils/expectToEqualArray";
 import { CROSS_NEIGHBORS } from "../matricies/directions";
 
@@ -17,15 +18,24 @@ describe("floodFill", () => {
     expectToEqualArray(filled, []);
   });
 
-  it("should return just start node if only node is empty", () => {
+  it("should return entire matrix of locations", () => {
+    const dimensions = { width: 3, height: 3 };
+
     const filled = floodFill(
       getNeighbors(CROSS_NEIGHBORS),
-      initMatrix({ width: 10, height: 10 }),
+      initMatrix(dimensions),
       [{ row: 0, col: 0 }],
       [],
       []
     );
 
-    expectToEqualArray(filled, []);
+    expectToEqualArray(
+      filled,
+      pipe(
+        initMatrix,
+        mapMatrix((value, location) => location),
+        flatten
+      )(dimensions)
+    );
   });
 });
