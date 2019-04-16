@@ -23,7 +23,7 @@ const getLocationFromDirection = curry((location, direction) => {
   };
 });
 
-const getNeighbors = curry((directions = CROSS_NEIGHBORS, matrix, location) => {
+const getNeighbors = curry((directions, matrix, location) => {
   const isLocationInBoundsWithMatrix = isLocationInBounds(matrix);
 
   if (!isLocationInBoundsWithMatrix(location)) {
