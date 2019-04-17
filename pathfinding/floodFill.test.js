@@ -3,12 +3,12 @@ import floodFill from "./floodFill";
 import getNeighbors from "../matricies/getNeighbors";
 import { initMatrix, mapMatrix, fillMatrix, updateMatrix } from "../matricies";
 import expectToEqualArray from "../testUtils/expectToEqualArray";
-import { getCrossNeighbors } from "../matricies/directions";
+import { getCrossDirections } from "../matricies/directions";
 
 describe("floodFill", () => {
   it("should return empty array if open is empty", () => {
     const filled = floodFill(
-      getNeighbors(getCrossNeighbors),
+      getNeighbors(getCrossDirections),
       always(true),
       initMatrix({ width: 10, height: 10 }),
       [],
@@ -23,7 +23,7 @@ describe("floodFill", () => {
     const dimensions = { width: 3, height: 3 };
 
     const filled = floodFill(
-      getNeighbors(getCrossNeighbors),
+      getNeighbors(getCrossDirections),
       always(true),
       initMatrix(dimensions),
       [{ row: 0, col: 0 }],
@@ -45,7 +45,7 @@ describe("floodFill", () => {
     const dimensions = { width: 3, height: 3 };
 
     const filled = floodFill(
-      getNeighbors(getCrossNeighbors),
+      getNeighbors(getCrossDirections),
       always(false),
       initMatrix(dimensions),
       [{ row: 0, col: 0 }],
@@ -60,7 +60,7 @@ describe("floodFill", () => {
     const dimensions = { width: 3, height: 3 };
 
     const filled = floodFill(
-      getNeighbors(getCrossNeighbors),
+      getNeighbors(getCrossDirections),
       always(false),
       initMatrix(dimensions),
       [{ row: 0, col: 0 }],
@@ -81,7 +81,7 @@ describe("floodFill", () => {
     )(dimensions);
 
     const filled = floodFill(
-      getNeighbors(getCrossNeighbors),
+      getNeighbors(getCrossDirections),
       identity, // use identity function as checkLocation so location values determine if they should be found
       splitMatrix,
       [{ row: 0, col: 0 }],
