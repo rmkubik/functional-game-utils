@@ -29,7 +29,7 @@ const floodFill = (
         !containsLocation(closed, neighbor) &&
         !containsLocation(open, neighbor)
       ) {
-        // if location not already closed or marked as open, push it into open
+        // if location not already closed or open, push it into open
         open.push(neighbor);
       }
     });

@@ -1,6 +1,5 @@
 import { curry, pipe, map, filter } from "ramda";
 import { isLocationInBounds } from "./locations";
-import { CROSS_NEIGHBORS } from "./directions";
 
 const getLocationFromDirection = curry((location, direction) => {
   let { row, col } = location;
