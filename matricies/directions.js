@@ -1,4 +1,4 @@
-import { pick } from "ramda";
+import { pick, map, pipe, toPairs, filter } from "ramda";
 
 const getCrossDirections = () => [
   { up: true },
@@ -19,9 +19,14 @@ const getAllDirections = () => [
   ...getDiagonalDirections()
 ];
 
-const getConnectedDirections = connections => {
-  return pick(["up", "down", "left", "right"], connections);
-};
+const getConnectedDirections = pipe(
+  pick(["up", "down", "left", "right"]),
+  toPairs,
+  filter(([, connected]) => connected),
+  map(([direction, connected]) => ({
+    [direction]: connected
+  }))
+);
 
 export {
   getCrossDirections,
