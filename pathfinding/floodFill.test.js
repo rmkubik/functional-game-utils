@@ -71,7 +71,7 @@ describe("floodFill", () => {
     expectToEqualArray(filled, []);
   });
 
-  it("should return only locations connected to start", () => {
+  it("should return only locations connected to start and not invalid neighbors", () => {
     const dimensions = { width: 3, height: 3 };
     const splitMatrix = pipe(
       fillMatrix(gap, true),
@@ -82,7 +82,7 @@ describe("floodFill", () => {
 
     const filled = floodFill(
       getNeighbors(CROSS_NEIGHBORS),
-      identity,
+      identity, // use identity function as checkLocation so location values determine if they should be found
       splitMatrix,
       [{ row: 0, col: 0 }],
       [],
