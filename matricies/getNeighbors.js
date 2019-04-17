@@ -22,7 +22,7 @@ const getLocationFromDirection = curry((location, direction) => {
   };
 });
 
-const getNeighbors = curry((directions, matrix, location) => {
+const getNeighbors = curry((getDirections, matrix, location) => {
   const isLocationInBoundsWithMatrix = isLocationInBounds(matrix);
 
   if (!isLocationInBoundsWithMatrix(location)) {
@@ -37,7 +37,7 @@ const getNeighbors = curry((directions, matrix, location) => {
   return pipe(
     map(getLocationFromDirectionWithLocation),
     filter(isLocationInBoundsWithMatrix)
-  )(directions);
+  )(getDirections());
 });
 
 export default getNeighbors;

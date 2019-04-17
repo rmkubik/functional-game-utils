@@ -1,7 +1,7 @@
 import { initMatrix } from "./index";
 import getNeighbors from "./getNeighbors";
 import expectToEqualArray from "../testUtils/expectToEqualArray";
-import { CROSS_NEIGHBORS, ALL_NEIGHBORS } from "./directions";
+import { getCrossNeighbors, getAllNeighbors } from "./directions";
 
 describe("getNeighbors", () => {
   [
@@ -75,7 +75,7 @@ describe("getNeighbors", () => {
     it(`should get all cross neighbors for case: ${name}`, () => {
       const matrix = initMatrix({ width: 10, height: 10 });
 
-      const neighbors = getNeighbors(CROSS_NEIGHBORS, matrix, location);
+      const neighbors = getNeighbors(getCrossNeighbors, matrix, location);
 
       expectToEqualArray(neighbors, expectedNeighbors);
     });
@@ -180,7 +180,7 @@ describe("getNeighbors", () => {
     it(`should get all diagonal neighbors for case: ${name}`, () => {
       const matrix = initMatrix({ width: 10, height: 10 });
 
-      const neighbors = getNeighbors(ALL_NEIGHBORS, matrix, location);
+      const neighbors = getNeighbors(getAllNeighbors, matrix, location);
 
       expectToEqualArray(neighbors, expectedNeighbors);
     });

@@ -1,17 +1,20 @@
-const CROSS_NEIGHBORS = [
+const getCrossNeighbors = () => [
   { up: true },
   { left: true },
   { right: true },
   { down: true }
 ];
 
-const DIAGONAL_NEIGHBORS = [
+const getDiagonalNeighbors = () => [
   { up: true, left: true },
   { up: true, right: true },
   { down: true, right: true },
   { down: true, left: true }
 ];
 
-const ALL_NEIGHBORS = [...CROSS_NEIGHBORS, ...DIAGONAL_NEIGHBORS];
+const getAllNeighbors = () => [
+  ...getCrossNeighbors(),
+  ...getDiagonalNeighbors()
+];
 
-export { CROSS_NEIGHBORS, DIAGONAL_NEIGHBORS, ALL_NEIGHBORS };
+export { getCrossNeighbors, getDiagonalNeighbors, getAllNeighbors };
