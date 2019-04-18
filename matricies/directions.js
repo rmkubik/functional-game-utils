@@ -23,8 +23,8 @@ const getConnectedDirections = pipe(
   pick(["up", "down", "left", "right"]),
   toPairs,
   filter(([, connected]) => connected),
-  map(([direction, connected]) => ({
-    [direction]: connected
+  map(([direction]) => ({
+    [direction]: true
   }))
 );
 
