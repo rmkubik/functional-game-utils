@@ -1,7 +1,12 @@
-import { initMatrix } from "./index";
+import { pipe } from "ramda";
+import { initMatrix, constructMatrix, updateMatrix } from "./index";
 import getNeighbors from "./getNeighbors";
 import expectToEqualArray from "../testUtils/expectToEqualArray";
-import { getCrossDirections, getAllDirections } from "./directions";
+import {
+  getCrossDirections,
+  getAllDirections,
+  getConnectedDirections
+} from "./directions";
 
 describe("getNeighbors", () => {
   [
@@ -184,5 +189,43 @@ describe("getNeighbors", () => {
 
       expectToEqualArray(neighbors, expectedNeighbors);
     });
+  });
+
+  it("should get neighbors with single neighboring direction", () => {
+    const matrix = initMatrix({ width: 10, height: 10 });
+
+    const neighbors = getNeighbors(() => [{ up: true }], matrix, {
+      row: 3,
+      col: 8
+    });
+
+    expectToEqualArray(neighbors, [{ row: 2, col: 8 }]);
+  });
+
+  it("should get neighbors when getDirections is a function of matrix value", () => {
+    const matrix = pipe(
+      constructMatrix(() => ({
+        up: false,
+        down: false,
+        left: false,
+        right: false
+      })),
+      updateMatrix({ row: 1, col: 1 }, { up: true, left: true }),
+      updateMatrix({ row: 0, col: 1 }, { up: true, right: true, down: true })
+    )({ width: 3, height: 3 });
+
+    const neighborsA = getNeighbors(getConnectedDirections, matrix, {
+      row: 1,
+      col: 1
+    });
+
+    expectToEqualArray(neighborsA, [{ row: 0, col: 1 }, { row: 1, col: 0 }]);
+
+    const neighborsB = getNeighbors(getConnectedDirections, matrix, {
+      row: 0,
+      col: 1
+    });
+
+    expectToEqualArray(neighborsB, [{ row: 0, col: 2 }, { row: 1, col: 1 }]);
   });
 });
