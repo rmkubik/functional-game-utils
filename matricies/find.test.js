@@ -17,14 +17,14 @@ describe("findInMatrix", () => {
   });
 
   it("should return undefined if comparator has no match", () => {
-    const target = { node: { start: true } };
+    const target = { thing: { prop: true } };
 
     const matrix = pipe(
       initMatrix,
       updateMatrix({ row: 3, col: 7 }, target)
     )({ width: 10, height: 10 });
 
-    const value = findInMatrix(pathEq(["node", "start"], false), matrix);
+    const value = findInMatrix(pathEq(["node", "start"], true), matrix);
 
     expect(value).toBe(undefined);
   });
