@@ -19,13 +19,15 @@ const getAllDirections = () => [
   ...getDiagonalDirections()
 ];
 
+const isPairConnected = ([, connected]) => connected;
+const buildDirection = ([direction]) => ({
+  [direction]: true
+});
 const getConnectedDirections = pipe(
   pick(["up", "down", "left", "right"]),
   toPairs,
-  filter(([, connected]) => connected),
-  map(([direction]) => ({
-    [direction]: true
-  }))
+  filter(isPairConnected),
+  map(buildDirection)
 );
 
 export {
