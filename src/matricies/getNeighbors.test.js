@@ -1,7 +1,7 @@
 import { pipe } from "ramda";
 import { initMatrix, constructMatrix, updateMatrix } from "./index";
 import getNeighbors from "./getNeighbors";
-import expectToEqualArray from "../testUtils/expectToEqualArray";
+import expectToEqualArray from "../../testUtils/expectToEqualArray";
 import {
   getCrossDirections,
   getAllDirections,

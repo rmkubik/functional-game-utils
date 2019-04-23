@@ -2,7 +2,7 @@ import { pipe, flatten, identity, always, __ as gap } from "ramda";
 import floodFill from "./floodFill";
 import getNeighbors from "../matricies/getNeighbors";
 import { initMatrix, mapMatrix, fillMatrix, updateMatrix } from "../matricies";
-import expectToEqualArray from "../testUtils/expectToEqualArray";
+import expectToEqualArray from "../../testUtils/expectToEqualArray";
 import { getCrossDirections } from "../matricies/directions";
 
 describe("floodFill", () => {

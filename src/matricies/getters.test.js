@@ -1,5 +1,5 @@
 import { constructMatrix, initMatrix } from "./index";
-import expectToEqualArray from "../testUtils/expectToEqualArray";
+import expectToEqualArray from "../../testUtils/expectToEqualArray";
 import { getRow, getCol } from "./getters";
 
 describe("getRow", () => {

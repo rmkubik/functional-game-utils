@@ -1,5 +1,5 @@
 import { getConnectedDirections } from "./directions";
-import expectToEqualArray from "../testUtils/expectToEqualArray";
+import expectToEqualArray from "../../testUtils/expectToEqualArray";
 
 describe("getConnectedNeighbors", () => {
   it("should get directions from connection", () => {
