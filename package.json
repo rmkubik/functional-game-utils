@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "parcel build src/index.js --target node",
+    "prepublishOnly": "npm run build",
     "start": "npm run build && node dist",
     "test": "jest"
   },
