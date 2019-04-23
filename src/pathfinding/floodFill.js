@@ -1,5 +1,5 @@
 import { containsLocation } from "../arrays";
-import { getLocation } from "../matricies/locations";
+import { getLocation } from "../matrices/locations";
 
 const floodFill = (
   getNeighbors,

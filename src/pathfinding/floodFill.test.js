@@ -1,9 +1,9 @@
 import { pipe, flatten, identity, always, __ as gap } from "ramda";
 import floodFill from "./floodFill";
-import getNeighbors from "../matricies/getNeighbors";
-import { initMatrix, mapMatrix, fillMatrix, updateMatrix } from "../matricies";
+import getNeighbors from "../matrices/getNeighbors";
+import { initMatrix, mapMatrix, fillMatrix, updateMatrix } from "../matrices";
 import expectToEqualArray from "../../testUtils/expectToEqualArray";
-import { getCrossDirections } from "../matricies/directions";
+import { getCrossDirections } from "../matrices/directions";
 
 describe("floodFill", () => {
   it("should return empty array if open is empty", () => {

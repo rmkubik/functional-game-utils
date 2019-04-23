@@ -1,6 +1,6 @@
 import { pipe, map, curry } from "ramda";
 import { isFunction, isPositive } from "ramda-adjunct";
-import { compareLocations } from "../matricies/locations";
+import { compareLocations } from "../matrices/locations";
 import assert from "../assert";
 
 const fillArray = curry((length, value) => Array(length).fill(value));
