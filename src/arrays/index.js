@@ -19,6 +19,8 @@ const fillArray = curry((length, value) => Array(length).fill(value));
 const initArray = length => fillArray(length, 0);
 
 /**
+ * @description A function used to construct the value of a given array index.
+ *
  * @callback ArrayConstructor
  * @param {number} index - The index of the constructed value.
  */
@@ -28,7 +30,9 @@ const initArray = length => fillArray(length, 0);
  * result of running the constructor function.
  *
  * @param {ArrayConstructor} constructor - The function used to construct each value of the array.
- * @param {number} length - The length of the array to be filled.
+ * @param {number} length - The length of the array to be filled. Must be a positive number not including zero.
+ * @throws {AssertionError} - Will throw an error if constructor isn't a function.
+ * @throws {AssertionError} - Will throw an error if length isn't a positive number not including zero.
  */
 const constructArray = curry((constructor, length) => {
   assert(isFunction(constructor), "Constructor argument should be a function!");
