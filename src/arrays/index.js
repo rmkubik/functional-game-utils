@@ -8,6 +8,7 @@ import assert from "../assert";
  *
  * @param {number} length - The length of the array to be filled.
  * @param {number} value - What value each index of the array will be filled with.
+ * @returns {Object[]} Newly created array of values.
  */
 const fillArray = curry((length, value) => Array(length).fill(value));
 
@@ -15,6 +16,7 @@ const fillArray = curry((length, value) => Array(length).fill(value));
  * @description Creates an array of the specified length and filled with 0s.
  *
  * @param {number} length - The length of the array to be filled.
+ * @returns {number[]} Newly created array of 0s.
  */
 const initArray = length => fillArray(length, 0);
 
@@ -33,6 +35,7 @@ const initArray = length => fillArray(length, 0);
  * @param {number} length - The length of the array to be filled. Must be a positive number not including zero.
  * @throws {AssertionError} - Will throw an error if constructor isn't a function.
  * @throws {AssertionError} - Will throw an error if length isn't a positive number not including zero.
+ * @returns {Object[]} Newly created array of the constructed values.
  */
 const constructArray = curry((constructor, length) => {
   assert(isFunction(constructor), "Constructor argument should be a function!");
@@ -46,6 +49,13 @@ const constructArray = curry((constructor, length) => {
   )(length);
 });
 
+/**
+ * @description Does the provided array contain the location provided.
+ *
+ * @param {Object[]} array - The array to be searched.
+ * @param {Location} location - The location to ge searched for.
+ * @returns {bool} True if the location is present in the array.
+ */
 const containsLocation = curry((array, location) =>
   Boolean(array.find(value => compareLocations(value, location)))
 );
