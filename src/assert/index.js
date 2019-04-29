@@ -21,7 +21,7 @@ class AssertionError extends Error {
  *   assert(typeof param === 'string', 'Param must be of type string!');
  * }
  *
- * @param {bool} assertion
+ * @param {boolean} assertion
  * @param {string} message
  */
 const assert = (assertion, message) => {

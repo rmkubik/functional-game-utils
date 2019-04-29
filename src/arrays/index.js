@@ -54,7 +54,7 @@ const constructArray = curry((constructor, length) => {
  *
  * @param {Object[]} array - The array to be searched.
  * @param {Location} location - The location to ge searched for.
- * @returns {bool} True if the location is present in the array.
+ * @returns {boolean} True if the location is present in the array.
  */
 const containsLocation = curry((array, location) =>
   Boolean(array.find(value => compareLocations(value, location)))
