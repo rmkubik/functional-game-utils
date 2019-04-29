@@ -5,6 +5,7 @@ import {
   containsLocation
 } from "./index";
 import { AssertionError } from "../assert";
+import expectToEqualArray from "../../testUtils/expectToEqualArray";
 
 describe("fillArray", () => {
   it("should fill array with provided value and length", () => {
@@ -59,6 +60,12 @@ describe("constructArray", () => {
     expect(() => {
       build("test");
     }).toThrow(AssertionError);
+  });
+
+  it("should provide array index to constructor function as param", () => {
+    const array = constructArray(index => index, 5);
+
+    expectToEqualArray(array, [0, 1, 2, 3, 4]);
   });
 });
 
