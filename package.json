@@ -11,13 +11,16 @@
   },
   "author": "Ryan Kubik <rmkubik@me.com> (https://ryankubik.com)",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "peerDependencies": {
     "ramda": "^0.26.1",
     "ramda-adjunct": "^2.16.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "jest": "^24.7.1",
-    "parcel-bundler": "^1.12.3"
+    "parcel-bundler": "^1.12.3",
+    "ramda": "^0.26.1",
+    "ramda-adjunct": "^2.16.1"
   }
 }
