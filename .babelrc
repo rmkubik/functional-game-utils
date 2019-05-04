@@ -1,3 +1,19 @@
 {
-  "presets": ["@babel/preset-env"]
+  // Babel is reading the .browserlist file to figure out what browsers it is targeting
+  // This helps it know what needs to be polyfilled
+  "presets": [
+    [
+      // A default babel config
+      "@babel/preset-env",
+      {
+        // This lets us add polyfills as we use functionality that needs polyfilling rather than
+        // adding all corejs polyfills
+        // "entry" will add all polyfills your targeted browsers might require.
+        "useBuiltIns": "usage",
+        // https://babeljs.io/blog/2019/03/19/7.4.0
+        // We need to specify our corejs version that will be used for polyfilling
+        "corejs": 3
+      }
+    ]
+  ]
 }
