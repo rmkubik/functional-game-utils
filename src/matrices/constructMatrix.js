@@ -1,5 +1,6 @@
 import { curry, pipe } from "ramda";
-import { initMatrix, mapMatrix } from "./index";
+import initMatrix from "./initMatrix";
+import mapMatrix from "./mapMatrix";
 
 /**
  * @description A function used to construct the value of a given matrix location.
