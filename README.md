@@ -10,7 +10,7 @@ npm install functional-game-utils
 
 ## Usage
 
-Functional Game Utils is built on top of [ramda.js](https://ramdajs.com), a functional JavaScript library. It will work well with that library in your own project, but you do not need Ramda installed to use this library.
+Functional Game Utils is built on top of [ramda.js](https://ramdajs.com), a functional JavaScript library. Ramda and Ramda-Adjunct are both peer dependencies of this project.
 
 Functional Game Utils has several main categories of functions.
 
