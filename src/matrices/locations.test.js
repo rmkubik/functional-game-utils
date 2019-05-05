@@ -1,5 +1,10 @@
 import { pipe, update } from "ramda";
-import { isLocationInBounds, getLocation, compareLocations } from "./locations";
+import {
+  isLocationInBounds,
+  getLocation,
+  compareLocations,
+  manhattanDistance
+} from "./locations";
 import { initMatrix, updateMatrix } from ".";
 import { AssertionError } from "../assert";
 
@@ -174,6 +179,61 @@ describe("compareLocations", () => {
       a
     )} !== ${JSON.stringify(b)}`, () => {
       expect(compareLocations(a, b)).toBe(false);
+    });
+  });
+});
+
+describe("manhattanDistance", () => {
+  [
+    [
+      {
+        row: 0,
+        col: 0
+      },
+      {
+        row: 0,
+        col: 0
+      },
+      0
+    ],
+    [
+      {
+        row: -1,
+        col: -3
+      },
+      {
+        row: -2,
+        col: -2
+      },
+      2
+    ],
+    [
+      {
+        row: 4,
+        col: 1
+      },
+      {
+        row: 7,
+        col: 1
+      },
+      3
+    ],
+    [
+      {
+        row: 2,
+        col: -2
+      },
+      {
+        row: 2,
+        col: -6
+      },
+      4
+    ]
+  ].forEach(([a, b, value]) => {
+    it(`should return ${value} for distance between ${JSON.stringify(
+      a
+    )} and ${JSON.stringify(b)}`, () => {
+      expect(manhattanDistance(a, b)).toBe(value);
     });
   });
 });

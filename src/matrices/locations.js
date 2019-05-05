@@ -24,4 +24,8 @@ const compareLocations = curry((a, b) => {
   return a.row === b.row && a.col === b.col;
 });
 
-export { isLocationInBounds, getLocation, compareLocations };
+const manhattanDistance = curry((a, b) => {
+  return Math.abs(a.row - b.row) + Math.abs(a.col - b.col);
+});
+
+export { isLocationInBounds, getLocation, compareLocations, manhattanDistance };
