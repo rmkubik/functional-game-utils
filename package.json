@@ -2,9 +2,10 @@
   "name": "functional-game-utils",
   "version": "1.4.0",
   "description": "A library of utility functions for JavaScript game development",
-  "main": "dist/index.js",
+  "main": "dist/functional-game-utils.js",
   "scripts": {
     "build": "rollup -c rollup.config.prod.js",
+    "dev": "rollup -c rollup.config.dev.js",
     "prepublishOnly": "npm run build",
     "start": "npm run build && node dist",
     "test": "jest"

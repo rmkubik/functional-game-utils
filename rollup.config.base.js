@@ -7,14 +7,15 @@ export default {
   output: {
     // UMD requires a bundle name
     name: "functional-game-utils",
-    file: "dist/index.js",
+    file: "dist/functional-game-utils.js",
     // UMD format can be used in browser and node
     format: "umd",
     // UMD Format needs to know these are global variables
     globals: {
       ramda: "ramda",
       "ramda-adjunct": "ramda-adjunct"
-    }
+    },
+    sourcemap: true
   },
   // Because we want ramda and ramda-adjunct to be peer dependencies, we need to tell rollup not to bundle them
   external: ["ramda", "ramda-adjunct"],
