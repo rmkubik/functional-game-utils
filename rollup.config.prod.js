@@ -16,8 +16,8 @@ export default [
       ...base.plugins,
       // Minify the bundle for production, remove sourceMaps and comments
       minify({
-        sourceMap: true,
-        comments: true
+        sourceMap: false,
+        comments: false
       })
     ]
   }
