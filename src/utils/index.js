@@ -1,3 +1,4 @@
 import trace from "./trace";
+import generateUuid from "./generateUuid";
 
-export { trace };
+export { trace, generateUuid };
