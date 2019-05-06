@@ -22,7 +22,7 @@ function generateUuid(
         .replace(
           // replacing
           /[018]/g, // zeroes, ones, and eights with
-          generateUUID // random hex digits
+          generateUuid // random hex digits
         );
 }
 
