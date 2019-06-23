@@ -1,26 +1,34 @@
 import { find, curry, pipe, flatten, findIndex, any } from "ramda";
 import { getRow } from "./getters";
 
-const findValue = curry((comparator, matrix) =>
-  pipe(
-    flatten,
-    find(comparator)
-  )(matrix)
-);
+const findValue = curry((comparator, matrix) => {
+  let found;
 
-const findLocation = curry((comparator, matrix) => {
-  const row = findIndex(row => any(comparator, row), matrix);
-
-  if (row === -1) {
-    return undefined;
+  for (let row = 0; row < matrix.length && !found; row++) {
+    for (let col = 0; col < matrix[0].length && !found; col++) {
+      if (comparator(matrix[row][col], { row, col })) {
+        found = matrix[row][col];
+      }
+    }
   }
 
-  const col = findIndex(comparator, getRow(matrix, row));
+  return found;
+});
 
-  return {
-    row,
-    col
-  };
+const findLocation = curry((comparator, matrix) => {
+  let found = false;
+  let location = {};
+
+  for (let row = 0; row < matrix.length && !found; row++) {
+    for (let col = 0; col < matrix[0].length && !found; col++) {
+      if (comparator(matrix[row][col], { row, col })) {
+        found = true;
+        location = { row, col };
+      }
+    }
+  }
+
+  return found ? location : undefined;
 });
 
 export { findValue, findLocation };
