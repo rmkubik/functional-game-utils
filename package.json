@@ -1,6 +1,6 @@
 {
   "name": "functional-game-utils",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "A library of utility functions for JavaScript game development",
   "main": "dist/functional-game-utils.js",
   "scripts": {
