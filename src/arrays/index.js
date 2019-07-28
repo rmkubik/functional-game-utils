@@ -1,4 +1,4 @@
-import { pipe, curry } from "ramda";
+import { pipe, curry, clone, times } from "ramda";
 import { isFunction, isPositive, mapIndexed } from "ramda-adjunct";
 import { compareLocations } from "../matrices/locations";
 import assert from "../assert";
@@ -10,7 +10,7 @@ import assert from "../assert";
  * @param {number} value - What value each index of the array will be filled with.
  * @returns {Object[]} Newly created array of values.
  */
-const fillArray = curry((length, value) => Array(length).fill(value));
+const fillArray = curry((length, value) => times(() => clone(value), length));
 
 /**
  * @description Creates an array of the specified length and filled with 0s.

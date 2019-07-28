@@ -19,6 +19,13 @@ describe("fillArray", () => {
 
     expect(array).toEqual(["value", "value", "value", "value", "value"]);
   });
+
+  it("should clone objects passed into the array", () => {
+    const object = { test: "value" };
+    const array = fillArray(5)(object);
+
+    expect(array[0] === array[1]).toBe(false);
+  });
 });
 
 describe("initArray", () => {
