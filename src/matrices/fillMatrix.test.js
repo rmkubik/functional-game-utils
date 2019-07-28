@@ -24,4 +24,11 @@ describe("fillMatrix", () => {
 
     expect(matrix).toEqual([[2, 2], [2, 2], [2, 2]]);
   });
+
+  it("should clone objects passed into the matrix", () => {
+    const object = { test: "value" };
+    const matrix = fillMatrix({ width: 3, height: 3 }, object);
+
+    expect(matrix[0] === matrix[1]).toBe(false);
+  });
 });
