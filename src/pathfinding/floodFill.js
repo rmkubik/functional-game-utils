@@ -17,7 +17,7 @@ const floodFill = (
   // get next open location
   const location = open.pop();
 
-  if (isLocationValid(getLocation(matrix, location))) {
+  if (isLocationValid(getLocation(matrix, location), location, matrix)) {
     // mark location as found
     found.push(location);
 

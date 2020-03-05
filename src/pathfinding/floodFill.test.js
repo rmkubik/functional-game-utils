@@ -95,4 +95,28 @@ describe("floodFill", () => {
       { row: 2, col: 0 }
     ]);
   });
+
+  it("should pass location and matrix into checkLocation function", () => {
+    const dimensions = { width: 3, height: 3 };
+    const matrixWithOneFalse = pipe(
+      fillMatrix(gap, true),
+      updateMatrix({ row: 1, col: 1 }, false)
+    )(dimensions);
+    const returnsTrueMock = jest.fn(() => true);
+
+    floodFill(
+      getNeighbors(getCrossDirections),
+      returnsTrueMock,
+      matrixWithOneFalse,
+      [{ row: 0, col: 0 }],
+      [],
+      []
+    );
+
+    expect(returnsTrueMock).toHaveBeenCalledWith(
+      false,
+      { row: 1, col: 1 },
+      matrixWithOneFalse
+    );
+  });
 });
