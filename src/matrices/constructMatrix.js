@@ -1,4 +1,5 @@
 import { curry, pipe } from "ramda";
+import stripIndents from "common-tags/lib/stripIndents";
 import initMatrix from "./initMatrix";
 import mapMatrix from "./mapMatrix";
 
@@ -24,11 +25,14 @@ const constructMatrix = curry((constructor, dimensions) =>
   )(dimensions)
 );
 
-const constructMatrixFromString = curry((constructor, string) =>
-  pipe(
-    initMatrix,
-    mapMatrix((_, location) => constructor(location))
-  )(dimensions)
-);
+const constructMatrixFromTemplate = curry((mapCharacter, template) => {
+  const stripped = stripIndents(template);
+  const rows = stripped.split("\n");
+  const templateMatrix = rows.map((row) => row.split(" "));
 
-export { constructMatrix, constructMatrixFromString };
+  return mapMatrix((char, location) =>
+    mapCharacter(char, location, templateMatrix)
+  )(templateMatrix);
+});
+
+export { constructMatrix, constructMatrixFromTemplate };

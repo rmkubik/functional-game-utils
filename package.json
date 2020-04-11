@@ -13,6 +13,7 @@
   "author": "Ryan Kubik <rmkubik@me.com> (https://ryankubik.com)",
   "license": "MIT",
   "dependencies": {
+    "common-tags": "^1.8.0",
     "core-js": "^3.0.1"
   },
   "peerDependencies": {

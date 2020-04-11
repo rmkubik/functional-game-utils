@@ -60,7 +60,7 @@ const containsLocation = curry((array, location) =>
   Boolean(array.find((value) => compareLocations(value, location)))
 );
 
-const findBestMatch = curry((evaluator, betterFit, array) => {
+const findBestMatch = curry((evaluator, determineBetterFit, array) => {
   let currentBest;
 
   array.forEach((value, index) => {
@@ -70,7 +70,7 @@ const findBestMatch = curry((evaluator, betterFit, array) => {
       currentBest = index;
     }
 
-    if (betterFit(evaluator(array[currentBest]), evaluated)) {
+    if (determineBetterFit(evaluator(array[currentBest]), evaluated)) {
       currentBest = index;
     }
   });
