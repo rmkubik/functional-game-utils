@@ -62,7 +62,6 @@ const createPath = (
   target,
   open,
   closed,
-  distance,
   heuristicFn
 ) => {
   if (open.length === 0) {
@@ -79,14 +78,6 @@ const createPath = (
         trackingMatrix,
         openLocation
       );
-
-      // console.log(
-      //   "matching -- ",
-      //   openLocation,
-      //   trackingMatrix,
-      //   heuristicDistance,
-      //   distanceFromStart
-      // );
 
       return heuristicDistance + distanceFromStart;
     },
@@ -124,12 +115,6 @@ const createPath = (
         let neighborHeuristicDistance = heuristicFn(neighbor, target);
         let neighborDistanceFromStart =
           getLocation(trackingMatrix, location).distanceFromStart + 1;
-
-        // console.log(
-        //   neighbor,
-        //   getLocation(trackingMatrix, location),
-        //   getLocation(trackingMatrix, location).distanceFromStart + 1
-        // );
 
         if (!containsLocation(open, neighbor)) {
           // no other distance tracked for this neighbor, it must be shortest
@@ -176,7 +161,6 @@ const createPath = (
     target,
     open,
     closed,
-    distance + 1,
     heuristicFn
   );
 
@@ -207,7 +191,6 @@ const getPath = curry(
       target,
       [start],
       [],
-      0,
       heuristicFn
     );
   }

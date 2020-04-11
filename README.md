@@ -24,12 +24,14 @@ Functional Game Utils has several main categories of functions.
 - initArray
 - constructArray
 - containsLocation
+- findBestMatch
 
 ### Matrices
 
 - fillMatrix
 - initMatrix
 - constructMatrix
+- constructMatrixFromTemplate
 - updateMatrix
 - getNeighbors
 - getCrossDirections
@@ -40,6 +42,7 @@ Functional Game Utils has several main categories of functions.
 - findValue
 - getRow
 - getCol
+- getDimensions
 - isLocationInBounds
 - getLocation
 - compareLocations
@@ -47,6 +50,7 @@ Functional Game Utils has several main categories of functions.
 ### Pathfinding
 
 - floodFill
+- getPath
 
 ## Development
 
