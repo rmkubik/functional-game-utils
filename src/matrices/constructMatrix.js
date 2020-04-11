@@ -24,4 +24,11 @@ const constructMatrix = curry((constructor, dimensions) =>
   )(dimensions)
 );
 
-export default constructMatrix;
+const constructMatrixFromString = curry((constructor, string) =>
+  pipe(
+    initMatrix,
+    mapMatrix((_, location) => constructor(location))
+  )(dimensions)
+);
+
+export { constructMatrix, constructMatrixFromString };

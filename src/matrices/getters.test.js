@@ -1,6 +1,6 @@
 import { constructMatrix, initMatrix } from "./index";
 import expectToEqualArray from "../../testUtils/expectToEqualArray";
-import { getRow, getCol } from "./getters";
+import { getRow, getCol, getDimensions } from "./getters";
 
 describe("getRow", () => {
   it("should return a specified row", () => {
@@ -31,5 +31,14 @@ describe("getCol", () => {
     const matrix = initMatrix({ width: 3, height: 3 });
 
     expect(getCol(matrix, -1)).toBe(undefined);
+  });
+});
+
+describe("getDimensions", () => {
+  it("should return correct width and height for square matrix", () => {
+    const dimensions = { width: 3, height: 3 };
+    const matrix = initMatrix(dimensions);
+
+    expect(getDimensions(matrix)).toEqual(dimensions);
   });
 });

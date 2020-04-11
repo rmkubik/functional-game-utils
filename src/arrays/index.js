@@ -18,7 +18,7 @@ const fillArray = curry((length, value) => times(() => clone(value), length));
  * @param {number} length - The length of the array to be filled.
  * @returns {number[]} Newly created array of 0s.
  */
-const initArray = length => fillArray(length, 0);
+const initArray = (length) => fillArray(length, 0);
 
 /**
  * @description A function used to construct the value of a given array index.
@@ -57,7 +57,31 @@ const constructArray = curry((constructor, length) => {
  * @returns {boolean} True if the location is present in the array.
  */
 const containsLocation = curry((array, location) =>
-  Boolean(array.find(value => compareLocations(value, location)))
+  Boolean(array.find((value) => compareLocations(value, location)))
 );
 
-export { fillArray, initArray, constructArray, containsLocation };
+const findBestMatch = curry((evaluator, betterFit, array) => {
+  let currentBest;
+
+  array.forEach((value, index) => {
+    const evaluated = evaluator(value);
+
+    if (currentBest === undefined) {
+      currentBest = index;
+    }
+
+    if (betterFit(evaluator(array[currentBest]), evaluated)) {
+      currentBest = index;
+    }
+  });
+
+  return currentBest;
+});
+
+export {
+  fillArray,
+  initArray,
+  constructArray,
+  containsLocation,
+  findBestMatch,
+};
