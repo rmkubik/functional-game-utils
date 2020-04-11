@@ -1,4 +1,4 @@
-import { curry, equals } from "ramda";
+import { curry, clone } from "ramda";
 import { containsLocation, findBestMatch } from "../arrays";
 import {
   getLocation,
@@ -6,6 +6,16 @@ import {
   manhattanDistance,
 } from "../matrices/locations";
 import { getDimensions, constructMatrix, updateMatrix } from "../matrices";
+
+const findPath = (trackingMatrix, location) => {
+  const { parent } = getLocation(trackingMatrix, location);
+
+  if (!parent) {
+    return [location];
+  }
+
+  return [...findPath(trackingMatrix, parent), location];
+};
 
 const createTrackingMatrix = (matrix, start, target, heuristicFn) => {
   const dimensions = getDimensions(matrix);
@@ -20,6 +30,7 @@ const createTrackingMatrix = (matrix, start, target, heuristicFn) => {
     {
       heuristicDistance: heuristicFn(start, target),
       distanceFromStart: 0,
+      parent: null,
     },
     trackingMatrix
   );
@@ -59,7 +70,7 @@ const createPath = (
     return undefined;
   }
 
-  let updatedTrackingMatrix;
+  let updatedTrackingMatrix = clone(trackingMatrix);
 
   // get next open location nearest to current location
   const locationIndex = findBestMatch(
@@ -93,14 +104,15 @@ const createPath = (
   // remove found location from open list
   const [location] = open.splice(locationIndex, 1);
 
-  // console.log("location -- ", location, open, closed, trackingMatrix);
+  // console.log("location -- ", location, open, trackingMatrix);
 
   if (isLocationValid(getLocation(matrix, location), location, matrix)) {
     // record our distance somehow
 
     if (compareLocations(location, target)) {
       // exit case, we found our destination, return the end of our path
-      return [location];
+
+      return findPath(trackingMatrix, location);
     }
 
     // open all the neighbors
@@ -143,8 +155,9 @@ const createPath = (
             {
               heuristicDistance: neighborHeuristicDistance,
               distanceFromStart: neighborDistanceFromStart,
+              parent: location,
             },
-            trackingMatrix
+            updatedTrackingMatrix
           );
         }
       }
@@ -159,7 +172,7 @@ const createPath = (
     getNeighbors,
     isLocationValid,
     matrix,
-    updatedTrackingMatrix ? updatedTrackingMatrix : trackingMatrix,
+    updatedTrackingMatrix,
     target,
     open,
     closed,
@@ -169,7 +182,7 @@ const createPath = (
 
   // a path was found to target node, add our current location as a member of the path
   if (path) {
-    return [location, ...path];
+    return path;
   }
 
   // there is no path to the target along this node
