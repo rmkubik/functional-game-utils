@@ -114,4 +114,41 @@ describe("getPath", () => {
       { row: 2, col: 3 },
     ]);
   });
+
+  it("should find best path when when matrix values are objects or null", () => {
+    const matrix = constructMatrixFromTemplate(
+      (char) => {
+        switch (char) {
+          case "S":
+          case "T":
+          case ".":
+            return { icon: char, passable: true };
+          case "X":
+            return null;
+        }
+      },
+      `
+        . . . .
+        S X . .
+        . . . T
+        . X . .
+      `
+    );
+
+    const path = getPath(
+      getNeighbors(getCrossDirections),
+      (tile) => (tile ? tile.passable : false),
+      matrix,
+      findLocation((tile) => (tile ? tile.icon === "S" : false), matrix),
+      findLocation((tile) => (tile ? tile.icon === "T" : false), matrix)
+    );
+
+    expect(path).toEqual([
+      { row: 1, col: 0 },
+      { row: 2, col: 0 },
+      { row: 2, col: 1 },
+      { row: 2, col: 2 },
+      { row: 2, col: 3 },
+    ]);
+  });
 });

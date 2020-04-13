@@ -127,7 +127,7 @@ const createPath = (
         // is neighbor's tracked distanceFromStart worse than the one we just calcuated?
         if (
           neighborDistanceFromStart <
-          getLocation(matrix, neighbor).distanceFromStart
+          getLocation(trackingMatrix, neighbor).distanceFromStart
         ) {
           // we have found a shorter path to our neighbor
           isNewDistanceShortest = true;
