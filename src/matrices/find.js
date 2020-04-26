@@ -31,4 +31,18 @@ const findLocation = curry((comparator, matrix) => {
   return found ? location : undefined;
 });
 
-export { findValue, findLocation };
+const findLocations = curry((comparator, matrix) => {
+  const matches = [];
+
+  for (let row = 0; row < height(matrix); row++) {
+    for (let col = 0; col < maxWidth(matrix); col++) {
+      if (comparator(matrix[row][col], { row, col })) {
+        matches.push({ row, col });
+      }
+    }
+  }
+
+  return matches;
+});
+
+export { findValue, findLocation, findLocations };

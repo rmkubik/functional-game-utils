@@ -1,6 +1,7 @@
 import { pipe, pathEq, clone } from "ramda";
-import { findValue, findLocation } from "./find";
+import { findValue, findLocation, findLocations } from "./find";
 import { initMatrix, updateMatrix } from ".";
+import expectToEqualArray from "../../testUtils/expectToEqualArray";
 
 describe("findValue", () => {
   it("should find value in matrix if comparator matches", () => {
@@ -88,5 +89,57 @@ describe("findLocation", () => {
     const location = findLocation(pathEq(["thing", "prop"], true), matrix);
 
     expect(location).toBe(undefined);
+  });
+});
+
+describe("findLocations", () => {
+  it("should return found locations", () => {
+    const target = { thing: { prop: true } };
+    const targetLocation1 = { row: 3, col: 7 };
+    const targetLocation2 = { row: 2, col: 1 };
+
+    const matrix = pipe(
+      initMatrix,
+      updateMatrix(targetLocation1, target),
+      updateMatrix(targetLocation2, target)
+    )({ width: 10, height: 10 });
+
+    const locations = findLocations(pathEq(["thing", "prop"], true), matrix);
+
+    expectToEqualArray(locations, [targetLocation1, targetLocation2]);
+  });
+
+  it("should return found location for irregular matrix", () => {
+    const target = { thing: { prop: true } };
+    const targetLocation1 = { row: 3, col: 7 };
+    const targetLocation2 = { row: 2, col: 1 };
+
+    const matrix = pipe(
+      initMatrix,
+      updateMatrix(targetLocation1, target),
+      updateMatrix(targetLocation2, target)
+    )({ width: 10, height: 10 });
+
+    matrix[0] = [];
+
+    const locations = findLocations(pathEq(["thing", "prop"], true), matrix);
+
+    expectToEqualArray(locations, [targetLocation1, targetLocation2]);
+  });
+
+  it("should return undefined if target not in matrix", () => {
+    const target = { incorrect: { value: false } };
+    const targetLocation1 = { row: 3, col: 7 };
+    const targetLocation2 = { row: 2, col: 1 };
+
+    const matrix = pipe(
+      initMatrix,
+      updateMatrix(targetLocation1, target),
+      updateMatrix(targetLocation2, target)
+    )({ width: 10, height: 10 });
+
+    const locations = findLocations(pathEq(["thing", "prop"], true), matrix);
+
+    expectToEqualArray(locations, []);
   });
 });
