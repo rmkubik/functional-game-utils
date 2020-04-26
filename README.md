@@ -39,6 +39,7 @@ Functional Game Utils has several main categories of functions.
 - getAllDirections
 - getConnectedDirections
 - findLocation
+- findLocations
 - findValue
 - getRow
 - getCol
@@ -51,6 +52,15 @@ Functional Game Utils has several main categories of functions.
 
 - floodFill
 - getPath
+- createDistanceMap
+
+### Queues
+
+- Queue
+
+### Sets
+
+- ComparableSet
 
 ## Development
 
