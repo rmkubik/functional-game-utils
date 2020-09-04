@@ -41,4 +41,11 @@ describe("getDimensions", () => {
 
     expect(getDimensions(matrix)).toEqual(dimensions);
   });
+
+  it("should return correct width and height for a non-square matrix", () => {
+    const dimensions = { width: 3, height: 5 };
+    const matrix = initMatrix(dimensions);
+
+    expect(getDimensions(matrix)).toEqual(dimensions);
+  });
 });

@@ -12,8 +12,8 @@ const getCol = curry((matrix, colIndex) => {
 
 const getDimensions = (matrix) => {
   return {
-    height: getRow(matrix, 0).length,
-    width: getCol(matrix, 0).length,
+    height: getCol(matrix, 0).length,
+    width: getRow(matrix, 0).length,
   };
 };
 
