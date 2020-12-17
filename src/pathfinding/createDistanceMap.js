@@ -1,3 +1,7 @@
+/**
+ * @module Pathfinding
+ */
+
 import {
   initMatrix,
   getDimensions,

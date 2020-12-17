@@ -1,3 +1,7 @@
+/**
+ * @module Pathfinding
+ */
+
 import { curry, clone } from "ramda";
 import { containsLocation, findBestMatch } from "../arrays";
 import {

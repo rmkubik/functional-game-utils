@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import { curry, pipe, map, filter } from "ramda";
 import { isLocationInBounds, getLocation } from "./locations";
 
@@ -18,7 +22,7 @@ const getLocationFromDirection = curry((location, direction) => {
 
   return {
     row,
-    col
+    col,
   };
 });
 

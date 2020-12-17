@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import { curry } from "ramda";
 import assert from "../assert";
 

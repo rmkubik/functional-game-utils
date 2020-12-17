@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import { curry } from "ramda";
 
 const mapMatrix = curry((cb, matrix) =>

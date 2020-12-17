@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import { find, curry, pipe, flatten, findIndex, any } from "ramda";
 import { maxWidth, height } from "./dimensions";
 

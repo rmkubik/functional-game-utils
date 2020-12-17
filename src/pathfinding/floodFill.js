@@ -1,3 +1,7 @@
+/**
+ * @module Pathfinding
+ */
+
 import { containsLocation } from "../arrays";
 import { getLocation } from "../matrices/locations";
 
@@ -24,7 +28,7 @@ const floodFill = (
     // add all the neighbors
     const neighbors = getNeighbors(matrix, location);
 
-    neighbors.forEach(neighbor => {
+    neighbors.forEach((neighbor) => {
       if (
         !containsLocation(closed, neighbor) &&
         !containsLocation(open, neighbor)

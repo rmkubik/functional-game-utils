@@ -1,4 +1,8 @@
 /**
+ * @module Assert
+ */
+
+/**
  * @description A special error that indicates an assertion has failed.
  *
  * @extends Error

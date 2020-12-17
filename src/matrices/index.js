@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import fillMatrix from "./fillMatrix";
 import initMatrix from "./initMatrix";
 import mapMatrix from "./mapMatrix";

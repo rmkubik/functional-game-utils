@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import { pick, map, pipe, toPairs, filter } from "ramda";
 
 /**
@@ -27,7 +31,7 @@ const getCrossDirections = () => [
   { up: true },
   { left: true },
   { right: true },
-  { down: true }
+  { down: true },
 ];
 
 /**
@@ -47,7 +51,7 @@ const getDiagonalDirections = () => [
   { up: true, left: true },
   { up: true, right: true },
   { down: true, right: true },
-  { down: true, left: true }
+  { down: true, left: true },
 ];
 
 /**
@@ -66,12 +70,12 @@ const getDiagonalDirections = () => [
  */
 const getAllDirections = () => [
   ...getCrossDirections(),
-  ...getDiagonalDirections()
+  ...getDiagonalDirections(),
 ];
 
 const isPairConnected = ([, connected]) => connected;
 const buildDirection = ([direction]) => ({
-  [direction]: true
+  [direction]: true,
 });
 
 /**
@@ -104,5 +108,5 @@ export {
   getCrossDirections,
   getDiagonalDirections,
   getAllDirections,
-  getConnectedDirections
+  getConnectedDirections,
 };

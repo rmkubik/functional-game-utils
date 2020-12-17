@@ -1,3 +1,7 @@
+/**
+ * @module Array
+ */
+
 import { pipe, curry, clone, times } from "ramda";
 import { isFunction, isPositive, mapIndexed } from "ramda-adjunct";
 import { compareLocations } from "../matrices/locations";
@@ -6,6 +10,7 @@ import assert from "../assert";
 /**
  * @description Creates an array on a specified length and filled with a specified value.
  *
+ * @function
  * @param {number} length - The length of the array to be filled.
  * @param {number} value - What value each index of the array will be filled with.
  * @returns {Object[]} Newly created array of values.
@@ -52,6 +57,7 @@ const constructArray = curry((constructor, length) => {
 /**
  * @description Does the provided array contain the location provided.
  *
+ * @method
  * @param {Object[]} array - The array to be searched.
  * @param {Location} location - The location to ge searched for.
  * @returns {boolean} True if the location is present in the array.

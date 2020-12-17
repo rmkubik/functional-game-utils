@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import { curry, map, all, equals } from "ramda";
 
 const getRow = curry((matrix, rowIndex) => matrix[rowIndex]);

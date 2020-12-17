@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import { curry, update } from "ramda";
 
 const updateMatrix = curry(({ row, col }, value, matrix) =>

@@ -1,3 +1,7 @@
+/**
+ * @module Pathfinding
+ */
+
 import floodFill from "./floodFill";
 import getPath from "./getPath";
 import createDistanceMap from "./createDistanceMap";

@@ -1,3 +1,7 @@
+/**
+ * @module Matrix
+ */
+
 import { curry, pipe } from "ramda";
 import stripIndents from "common-tags/lib/stripIndents";
 import initMatrix from "./initMatrix";
