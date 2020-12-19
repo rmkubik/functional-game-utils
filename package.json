@@ -10,6 +10,7 @@
     "start": "npm run build && node dist",
     "start:docs": "cd docs && npm start",
     "build:docs": "cd docs && npm run build",
+    "export:docs": "cd docs && npm run export",
     "test": "jest"
   },
   "author": "Ryan Kubik <rmkubik@me.com> (https://ryankubik.com)",
