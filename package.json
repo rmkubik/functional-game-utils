@@ -8,6 +8,8 @@
     "dev": "rollup -c rollup.config.dev.js",
     "prepublishOnly": "npm run build",
     "start": "npm run build && node dist",
+    "start:docs": "cd docs && npm start",
+    "build:docs": "cd docs && npm run build",
     "test": "jest"
   },
   "author": "Ryan Kubik <rmkubik@me.com> (https://ryankubik.com)",
