@@ -11,7 +11,7 @@ function createGithubLink({ filename, lineno, path }) {
   return `https://github.com/rmkubik/${packageName}/blob/master${relativePath}/${filename}#L${lineno}`;
 }
 
-const Nav = ({ modules }) => {
+const DocumentationNav = ({ modules }) => {
   return (
     <nav>
       <ul>
@@ -49,9 +49,8 @@ const Home = ({ modules }) => {
   );
   return (
     <DocumentationLayout>
-      <Nav modules={moduleEntries} />
+      <DocumentationNav modules={moduleEntries} />
       <main>
-        <h1>Documentation</h1>
         {moduleEntries.map(([module, blocks]) => {
           return (
             <Fragment key={module}>

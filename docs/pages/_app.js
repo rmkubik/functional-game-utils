@@ -1,6 +1,8 @@
 import { MDXProvider } from "@mdx-js/react";
 
+import Header from "../components/Header";
 import Wrapper from "../components/Wrapper";
+import MainLayout from "../components/MainLayout";
 import "../styles/global.scss";
 
 const components = {
@@ -10,7 +12,10 @@ const components = {
 function App({ Component, pageProps }) {
   return (
     <MDXProvider components={components}>
-      <Component {...pageProps} />{" "}
+      <MainLayout>
+        <Header />
+        <Component {...pageProps} />{" "}
+      </MainLayout>
     </MDXProvider>
   );
 }
