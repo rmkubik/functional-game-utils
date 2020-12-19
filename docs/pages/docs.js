@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 import DocumentationLayout from "../components/DocumentationLayout";
 import { getModules } from "../services/jsdocs";
+import Anchor from "../components/Anchor";
 
 const packageName = "functional-game-utils";
 
@@ -54,12 +55,14 @@ const Home = ({ modules }) => {
         {moduleEntries.map(([module, blocks]) => {
           return (
             <Fragment key={module}>
-              <h3 id={module}>
+              <h3>
+                <Anchor id={module} />
                 {module[0].toUpperCase() + module.substring(1)}
               </h3>
               {blocks.map((block) => (
                 <div key={block.name}>
-                  <h4 id={block.name}>
+                  <h4>
+                    <Anchor id={block.name} />
                     {block.name} - {block.kind}
                   </h4>
                   <p>{block.description}</p>

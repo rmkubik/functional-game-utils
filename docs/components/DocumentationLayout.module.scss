@@ -6,7 +6,7 @@
   grid-template-columns: max-content auto;
   grid-gap: 32px;
 
-  padding-top: calc(#{vars.$headerTotalOffset});
+  padding-top: vars.$headerTotalOffset;
 
   nav {
     grid-area: nav;

@@ -1,0 +1,8 @@
+@use '../styles/vars.scss';
+
+.anchor {
+  display: block;
+  position: relative;
+  top: vars.$headerTotalOffset * -1;
+  visibility: hidden;
+}
