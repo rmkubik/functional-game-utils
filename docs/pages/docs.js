@@ -85,8 +85,10 @@ const Home = ({ modules }) => {
                   </ul>
                   <Link href={createGithubLink(block.meta)}>View Source</Link>
                   {/* <pre>{JSON.stringify(block, undefined, 2)}</pre> */}
+                  <hr />
                 </div>
               ))}
+              <hr />
             </Fragment>
           );
         })}

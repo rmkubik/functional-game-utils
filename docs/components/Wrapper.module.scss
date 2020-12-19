@@ -4,5 +4,5 @@
   max-width: 800px;
   margin: 0 auto;
 
-  padding-top: #{vars.$headerTotalOffset} + 4rem;
+  padding-top: vars.$headerTotalOffset + 4rem;
 }
