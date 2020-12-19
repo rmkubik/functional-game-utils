@@ -8,6 +8,7 @@
     "dev": "rollup -c rollup.config.dev.js",
     "prepublishOnly": "npm run build",
     "start": "npm run build && node dist",
+    "install:docs": "cd docs && npm install",
     "start:docs": "cd docs && npm start",
     "build:docs": "cd docs && npm run build",
     "export:docs": "cd docs && npm run export",
