@@ -1,0 +1,8 @@
+$backgroundColor: white;
+
+$bodyTopPadding: 4rem;
+$headerVerticalPadding: 1rem;
+$headerHeight: 4rem;
+$headerTotalOffset: calc(
+  #{$bodyTopPadding + ($headerVerticalPadding * 2) + $headerHeight}
+);

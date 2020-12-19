@@ -1,9 +1,24 @@
+@use '../styles/vars.scss';
+
+.container {
+  padding-top: vars.$bodyTopPadding;
+
+  position: fixed;
+  max-width: inherit;
+  width: 100%;
+
+  background-color: vars.$backgroundColor;
+  z-index: 1;
+}
+
 .header {
   display: grid;
   grid-template-columns: auto max-content;
 
   background-color: aliceblue;
-  padding: 1rem 3rem;
+  padding: vars.$headerVerticalPadding 3rem;
+
+  height: vars.$headerHeight;
 
   a {
     text-decoration: none;

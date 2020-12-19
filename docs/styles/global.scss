@@ -1,6 +1,10 @@
+@use './vars.scss';
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.5rem;
   font-size: large;
   margin: 0;
+
+  background-color: vars.$backgroundColor;
 }

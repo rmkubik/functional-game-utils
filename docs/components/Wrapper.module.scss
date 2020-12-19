@@ -1,4 +1,8 @@
+@use '../styles/vars.scss';
+
 .wrapper {
   max-width: 800px;
-  margin: 4rem auto;
+  margin: 0 auto;
+
+  padding-top: calc(#{vars.$headerTotalOffset} + 4rem);
 }

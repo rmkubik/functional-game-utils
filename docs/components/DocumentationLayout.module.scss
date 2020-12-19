@@ -1,15 +1,28 @@
+@use '../styles/vars.scss';
+
 .documentation {
   display: grid;
   grid-template-areas: "nav main";
   grid-template-columns: max-content auto;
   grid-gap: 32px;
 
+  padding-top: calc(#{vars.$headerTotalOffset});
+
   nav {
     grid-area: nav;
+    overflow-y: scroll;
+    position: fixed;
+    width: 20rem;
+
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - #{vars.$headerTotalOffset});
 
     ul {
       list-style: none;
       padding: 0;
+
+      flex: 1;
 
       li {
         margin-bottom: 8px;
@@ -41,5 +54,7 @@
 
   main {
     grid-area: main;
+
+    margin-left: 20rem;
   }
 }
