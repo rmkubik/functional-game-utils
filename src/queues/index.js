@@ -2,6 +2,9 @@
  * @module Queue
  */
 
+/**
+ *
+ */
 class Queue {
   constructor(items = []) {
     // spread items to create a new array if it is iterable

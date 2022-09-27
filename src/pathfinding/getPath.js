@@ -42,7 +42,7 @@ const createTrackingMatrix = (matrix, start, target, heuristicFn) => {
   return trackingMatrixWithStartMarked;
 };
 
-/**
+/*
  *
  *
  * A-Star Adaptation based on:
@@ -177,6 +177,20 @@ const createPath = (
   return undefined;
 };
 
+/**
+ * @description Find the path from a start location to a target location
+ * using the specified matrix and parameters.
+ *
+ * @param {getNeighbors} getNeighbors
+ * @param {CellComparator} isLocationValid
+ * @param {Objet[][]} matrix
+ * @param {Location} start
+ * @param {Location} target
+ *
+ * @returns {Location[]} array of locations leading from the start location
+ * to the target location, including the start and target locations on either
+ * end of the array.
+ */
 const getPath = curry(
   (getNeighbors, isLocationValid, matrix, start, target) => {
     const heuristicFn = manhattanDistance;

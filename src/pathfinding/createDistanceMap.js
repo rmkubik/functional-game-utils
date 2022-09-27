@@ -23,6 +23,22 @@ function createBaseMap(matrix, goals) {
   }, matrix);
 }
 
+/**
+ * @description Creates a distance map with the given specifications. A
+ * distance map is a matrix. Each call has an integer value. The value
+ * is the manhattan distance that cell is from any goal location.
+ *
+ * AKA a "Djikstra Map" - http://www.roguebasin.com/index.php/Dijkstra_Maps_Visualized
+ *
+ * @param {getNeighbors} getNeighbors - function defining how to retrieve a
+ * cell's neighbors
+ * @param {CellComparator} isLocationValid - is a given cell able to be traversed.
+ * Could be used to create walls or other impassable terrain.
+ * @param {Object[][]} matrix
+ * @param {Location[]} goals - array of target cells
+ *
+ * @returns {number[][]} - matrix containing the calculated distance map
+ */
 function createDistanceMap(getNeighbors, isLocationValid, matrix, goals) {
   let distances = createBaseMap(matrix, goals);
   let cameFrom = initMatrix(getDimensions(matrix));

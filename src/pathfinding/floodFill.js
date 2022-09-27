@@ -5,6 +5,24 @@
 import { containsLocation } from "../arrays";
 import { getLocation } from "../matrices/locations";
 
+/**
+ * @description Returns an array of all locations connected to
+ * the starting open locations. Connections defined by getNeighbors
+ * and isLocationValid functions.
+ *
+ * @param {getNeighbors} getNeighbors
+ * @param {CellComparator} isLocationValid
+ * @param {Object[][]} matrix
+ * @param {Location[]} open - locations to start floodfilling from
+ * @param {Location[]} closed - usually empty, locations here will not
+ * be checked by the floodfill algorithm.
+ * @param {Location[]} found - usually empty, locations here will be
+ * returned by the floodfill function. If this array contains locations
+ * that the algorithm will find on its own, these values will be
+ * duplicated. This function does not guarantee uniqueness in that case.
+ *
+ * @returns {Location[]} flooded locations
+ */
 const floodFill = (
   getNeighbors,
   isLocationValid,
