@@ -7,12 +7,37 @@ import { initArray, constructArray } from "../arrays";
 import transposeMatrix from "./transposeMatrix";
 import { getDimensions, getRow, getCol } from "./getters";
 
+// TODO: These enum values are not correctly populated in
+// the docs, so I've hardcoded them into the enum's
+// description.
+
+/**
+ * Directions to translate a matrix:
+ * UP, DOWN, LEFT, RIGHT
+ *
+ * @readonly
+ * @enum {string}
+ */
 const MATRIX_TRANSLATE_DIRECTIONS = {
   UP: "UP",
   DOWN: "DOWN",
   LEFT: "LEFT",
   RIGHT: "RIGHT",
 };
+
+/**
+ * @description Translate a matrix in the provided direction
+ *
+ * @param {Object} options - control how the matrix is translated
+ * @param {boolean} [options.shouldWrap=false] - should the edge of the matrix at the end of the
+ * translation be placed on the opposite side of the matrix, or should it be removed entirely
+ * @param {MatrixConstructor} [options.constructFn=()=>undefined] - if wrapping is disabled, this
+ * constructor function is used to create the row at the newly exposed edge of the matrix.
+ * @param {MATRIX_TRANSLATE_DIRECTIONS} options.direction - direction to translate the matrix
+ * @param {Object[][]} - matrix to be translated
+ *
+ * @returns {Object[][]} newly translated matrix
+ */
 const translateMatrix = curry(
   (
     { shouldWrap = false, constructFn = () => undefined, direction },

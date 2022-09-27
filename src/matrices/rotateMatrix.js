@@ -6,10 +6,31 @@ import { curry } from "ramda";
 import { initArray } from "../arrays";
 import { getDimensions, getCol } from "./getters";
 
+// TODO: These enum values are not correctly populated in
+// the docs, so I've hardcoded them into the enum's
+// description.
+
+/**
+ * Directions to rotate a matrix:
+ * CLOCKWISE, COUNTER_CLOCKWISE
+ *
+ * @readonly
+ * @enum {string}
+ */
 const MATRIX_ROTATION_DIRECTIONS = {
   CLOCKWISE: "CLOCKWISE",
   COUNTER_CLOCKWISE: "COUNTER_CLOCKWISE",
 };
+
+/**
+ * @description Rotate a matrix in the provided direction
+ *
+ * @param {Object} options - control how the matrix is rotated
+ * @param {MATRIX_ROTATION_DIRECTIONS} options.direction - direction to rotate the matrix
+ * @param {Object[][]} - matrix to be rotated
+ *
+ * @returns {Object[][]} newly rotated matrix
+ */
 const rotateMatrix = curry(({ direction }, matrix) => {
   const { width } = getDimensions(matrix);
 

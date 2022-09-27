@@ -26,6 +26,18 @@ const getLocationFromDirection = curry((location, direction) => {
   };
 });
 
+/**
+ * @description Get all the neighboring locations of the provided location from
+ * the provided matrix that are in bounds.
+ *
+ * @param {function} - getDirections - this function should return a
+ * {Connections} object defining how matrix cells are connected.
+ * @param {Object[][]} - matrix - the matrix to be checked
+ * @param {Location} - location - location in the matrix whose neighbors
+ * should be returned.
+ *
+ * @returns {Location[]} array of all valid neighboring locations
+ */
 const getNeighbors = curry((getDirections, matrix, location) => {
   const isLocationInBoundsWithMatrix = isLocationInBounds(matrix);
 
@@ -34,9 +46,8 @@ const getNeighbors = curry((getDirections, matrix, location) => {
     return [];
   }
 
-  const getLocationFromDirectionWithLocation = getLocationFromDirection(
-    location
-  );
+  const getLocationFromDirectionWithLocation =
+    getLocationFromDirection(location);
 
   return pipe(
     map(getLocationFromDirectionWithLocation),

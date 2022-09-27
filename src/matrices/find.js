@@ -74,7 +74,7 @@ const findLocation = curry((comparator, matrix) => {
  * or location should be found.
  * @param {Object[][]} matrix - matrix to be searched
  *
- * @returns {Array<Location>} array containing all matching locations in the
+ * @returns {Location[]} array containing all matching locations in the
  * provided matrix.
  */
 const findLocations = curry((comparator, matrix) => {
