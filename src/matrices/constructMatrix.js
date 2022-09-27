@@ -12,6 +12,8 @@ import mapMatrix from "./mapMatrix";
  *
  * @callback MatrixConstructor
  * @param {Location} location - The location of the constructed value.
+ *
+ * @returns {Object} The value to be created at this location
  */
 
 /**
@@ -29,6 +31,37 @@ const constructMatrix = curry((constructor, dimensions) =>
   )(dimensions)
 );
 
+/**
+ * @description A function used to construct the value of a given matrix location
+ * based on an input character.
+ *
+ * @callback MatrixCharacterMap
+ * @param {string} character - Character for the current location
+ * @param {Location} location - The location of the constructed value.
+ * @param {Object[][]} - the entire template matrix
+ *
+ * @returns {Object} The value to be created at this location
+ */
+
+/**
+ * @description Constructs a matrix from a template string. The template string should
+ * represent the matrix. Each line of the template string (separated by newlines)
+ * represents a row in the matrix. On each line (or row), a column is indicated by a
+ * space between characters.
+ *
+ * @example This template string would create a 3x3 matrix with a different value for
+ * the center cell. The mapCharacter function could initialize different data based on
+ * this character.
+ * . . .
+ * . x .
+ * . . .
+ *
+ * @param {MatrixCharacterMap} mapCharacter - function to construct each location based
+ * on the character map
+ * @param {string} template - a two dimensional string representing the matrix to be created
+ *
+ * @returns {Object[][]} Newly created matrix of the constructed values.
+ */
 const constructMatrixFromTemplate = curry((mapCharacter, template) => {
   const stripped = stripIndents(template);
   const rows = stripped.split("\n");
