@@ -2,6 +2,9 @@
  * @module Set
  */
 
+/**
+ *
+ */
 class ComparableSet {
   constructor(comparator = (a, b) => a === b) {
     this.items = [];
